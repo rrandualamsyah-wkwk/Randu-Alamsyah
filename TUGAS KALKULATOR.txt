@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Kalkulator Randu</title>
+<style>
+:root{font-family:Inter,system-ui,sans-serif}
+body{display:flex;justify-content:center;align-items:center;min-height:100vh;background:#f0f0f0;flex-direction:column}
+.calculator{background:#040720;padding:20px;border-radius:16px;box-shadow:0 4px 12px rgba(0,0,0,.1);width:320px}
+.display{background:#222;color:#0f0;font-size:2em;padding:10px;border-radius:8px;text-align:right;word-wrap:break-word;word-break:break-all}
+.buttons{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:15px}
+button{padding:15px;font-size:1.1em;border:none;border-radius:8px;cursor:pointer;transition:.2s}
+button:hover{background:#ddd}
+.operator{background:#ff9500;color:#fff}
+.equal{grid-column:span 2;background:#34c759;color:#fff}
+.clear{background:#ff3b30;color:#fff}
+.header{font-size:18px;margin-bottom:10px}
+</style>
+</head>
+<body>
+  <!-- Identitas di luar kalkulator -->
+  <div style="text-align:center; margin-bottom:20px; font-size:20px; font-weight:bold;">
+    Nama: Randu Alamsyah <br>
+    Kelas: XI RPL 1
+  </div>
+
+  <div class="calculator" role="application" aria-label="Kalkulator sederhana">
+    <div class="header" style="text-align:center; padding:10px; font-weight:bold;">
+      
+    </div>
+    <div class="display">
+      <div class="history" id="history">&nbsp;</div>
+      <div class="output" id="output">0</div>
+    </div>
+    <div class="buttons">
+      <button class="clear" onclick="clearDisplay()">C</button>
+      <button onclick="backspace()">⌫</button>
+      <button onclick="appendDot()">,</button>
+       <button onclick="appendDot()">%</button>
+
+      <button onclick="appendOperator('/')">÷</button>
+      <button onclick="appendOperator('*')">×</button>
+       <button onclick="appendOperator('-')">−</button>
+       <button onclick="appendOperator('+')">+</button>
+
+          <button onclick="calculateSin()">sin</button>
+      <button onclick="calculateCos()">cos</button>
+      <button onclick="calculateTan()">tan</button>
+      <button onclick="calculateSin()">cot</button>
+
+       
+
+      <button onclick="appendNumber('9')">9</button>
+      <button onclick="appendNumber('8')">8</button>
+      <button onclick="appendNumber('7')">7</button>
+     
+
+      <button onclick="appendNumber('6')">6</button>
+      <button onclick="appendNumber('5')">5</button>
+      <button onclick="appendNumber('4')">4</button>
+
+      <button onclick="appendNumber('3')">3</button>
+      <button onclick="appendNumber('2')">2</button>
+      <button onclick="appendNumber('1')">1</button>
+      <button onclick="appendNumber('0')">0</button>
+      <button class="equal" onclick="calculate()">=</button>
+
+     
+    </div>
+  </div>
+
+<script>
+let output=document.getElementById("output");
+let historyDisplay=document.getElementById("history");
+
+function appendNumber(num){if(output.innerText=="0")output.innerText=num;else output.innerText+=num;}
+function appendOperator(op){output.innerText+=op;}
+function appendDot(){if(!output.innerText.includes("."))output.innerText+=".";}
+function clearDisplay(){output.innerText="0";historyDisplay.innerText="";}
+function backspace(){output.innerText=output.innerText.slice(0,-1)||"0";}
+function calculate(){try{let result=eval(output.innerText);historyDisplay.innerText=output.innerText;output.innerText=result;}catch{output.innerText="Error";}}
+function calculateSin(){let val=parseFloat(output.innerText);output.innerText=Math.sin(val*Math.PI/180).toFixed(6);}
+function calculateCos(){let val=parseFloat(output.innerText);output.innerText=Math.cos(val*Math.PI/180).toFixed(6);}
+function calculateTan(){let val=parseFloat(output.innerText);output.innerText=Math.tan(val*Math.PI/180).toFixed(6);}
+</script>
+</body>
+</html>
