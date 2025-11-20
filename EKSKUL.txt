@@ -1,0 +1,207 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Formulir Pendaftaran Ekstrakurikuler</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(to right, #e3f2fd, #bbdefb);
+      margin: 0;
+      padding: 20px;
+    }
+    h2 {
+      text-align: center;
+      color: #0d47a1;
+    }
+
+    form {
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+      max-width: 450px;
+      margin: 0 auto 20px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: bold;
+    }
+
+    input, select, button {
+      width: 100%;
+      padding: 8px;
+      margin-bottom: 15px;
+      border-radius: 5px;
+      border: 1px solid #90caf9;
+    }
+
+    button {
+      background-color: #1976d2;
+      color: white;
+      font-weight: bold;
+      border: none;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    button:hover {
+      background-color: #0d47a1;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background-color: #fff;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+
+    th, td {
+      border: 1px solid #90caf9;
+      padding: 10px;
+      text-align: center;
+    }
+
+    th {
+      background-color: #1976d2;
+      color: white;
+    }
+
+    td button {
+      width: auto;
+      padding: 5px 10px;
+      margin: 2px;
+      border-radius: 5px;
+    }
+
+    .hapus {
+      background-color: #e53935;
+    }
+
+    .hapus:hover {
+      background-color: #b71c1c;
+    }
+
+    .edit {
+      background-color: #43a047;
+    }
+
+    .edit:hover {
+      background-color: #1b5e20;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Formulir Pendaftaran Ekstrakurikuler</h2>
+
+  <form id="formPendaftaran">
+    <label for="nama">Nama:</label>
+    <input type="text" id="nama" placeholder="Masukkan nama" required>
+
+    <label for="kelas">Kelas:</label>
+    <input type="text" id="kelas" placeholder="Masukkan kelas" required>
+
+    <label for="gmail">Gmail:</label>
+    <input type="email" id="gmail" placeholder="Masukkan Gmail (contoh: nama@gmail.com)" required>
+
+    <label for="ekskul">Pilih Ekstrakurikuler:</label>
+    <select id="ekskul" required>
+      <option value="">-- Pilih --</option>
+      <option value="Jepang">Jepang</option>
+      <option value="Futsal">Futsal</option>
+      <option value="Voli">Voli</option>
+      <option value="Karya Ilmiah Remaja">Karya Ilmiah Remaja</option>
+    </select>
+
+    <button type="submit">Daftar</button>
+  </form>
+
+  <table id="tabelPendaftaran">
+    <thead>
+      <tr>
+        <th>No</th>
+        <th>Nama</th>
+        <th>Kelas</th>
+        <th>Gmail</th>
+        <th>Ekstrakurikuler</th>
+        <th>Aksi</th>
+      </tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+
+  <script>
+    const form = document.getElementById("formPendaftaran");
+    const tabelBody = document.querySelector("#tabelPendaftaran tbody");
+    let data = [];
+    let editIndex = -1;
+
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
+
+      const nama = document.getElementById("nama").value.trim();
+      const kelas = document.getElementById("kelas").value.trim();
+      const gmail = document.getElementById("gmail").value.trim();
+      const ekskul = document.getElementById("ekskul").value;
+
+      if (!gmail.endsWith("@gmail.com")) {
+        alert("Alamat email harus menggunakan domain @gmail.com");
+        return;
+      }
+
+      if (editIndex === -1) {
+        data.push({ nama, kelas, gmail, ekskul });
+      } else {
+        data[editIndex] = { nama, kelas, gmail, ekskul };
+        editIndex = -1;
+      }
+
+      form.reset();
+      tampilkanData();
+    });
+
+    function tampilkanData() {
+      tabelBody.innerHTML = "";
+      data.forEach((item, index) => {
+        const row = document.createElement("tr");
+
+        row.innerHTML = `
+          <td>${index + 1}</td>
+          <td>${item.nama}</td>
+          <td>${item.kelas}</td>
+          <td>${item.gmail}</td>
+          <td>${item.ekskul}</td>
+          <td>
+            <button class="edit" onclick="editData(${index})">Edit</button>
+            <button class="hapus" onclick="hapusData(${index})">Hapus</button>
+          </td>
+        `;
+
+        tabelBody.appendChild(row);
+      });
+    }
+
+    function hapusData(index) {
+      if (confirm("Yakin ingin menghapus data ini?")) {
+        data.splice(index, 1);
+        tampilkanData();
+      }
+    }
+
+    function editData(index) {
+      const item = data[index];
+      document.getElementById("nama").value = item.nama;
+      document.getElementById("kelas").value = item.kelas;
+      document.getElementById("gmail").value = item.gmail;
+      document.getElementById("ekskul").value = item.ekskul;
+      editIndex = index;
+    }
+  </script>
+
+</body>
+</html>
