@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Randu Tech Store — Laptop Premium Online</title>
+<style>
+:root {
+  --primary: #0a2a66;
+  --secondary: #0078ff;
+  --accent: #ffd700;
+  --bg: #f2f6ff;
+  --card: #ffffff;
+  --text: #003366;
+}
+* {box-sizing:border-box;margin:0;padding:0;}
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+  scroll-behavior: smooth;
+}
+
+/* ===== NAVBAR ===== */
+nav {
+  position: sticky;
+  top: 0;
+  background: rgba(10,42,102,0.9);
+  backdrop-filter: blur(8px);
+  color: white;
+  padding: 12px 0;
+  z-index: 1000;
+  transition: background 0.3s;
+  text-align:center;
+}
+nav a {
+  color: white;
+  text-decoration: none;
+  margin: 0 20px;
+  font-weight: 600;
+  transition: color 0.3s;
+}
+nav a:hover {
+  color: var(--accent);
+}
+
+/* ===== HERO ===== */
+.hero {
+  background: linear-gradient(135deg, #003366, #001e5f);
+  color: white;
+  padding: 80px 20px;
+  text-align: center;
+}
+.hero h1 {
+  font-size: 40px;
+  margin-bottom: 10px;
+}
+.hero p {
+  font-size: 18px;
+  color: #e0e9ff;
+}
+.hero button {
+  background: var(--accent);
+  border: none;
+  padding: 12px 24px;
+  border-radius: 30px;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 18px;
+  transition: 0.3s;
+}
+.hero button:hover {
+  background: #ffc400;
+  transform: translateY(-3px);
+}
+
+/* ===== PRODUK ===== */
+section {
+  padding: 40px 20px;
+  margin: 20px auto;
+  max-width: 1200px;
+  background: var(--card);
+  border-radius: 14px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+}
+h2 {
+  text-align: center;
+  color: var(--primary);
+  margin-bottom: 30px;
+}
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 24px;
+}
+.product-card {
+  background: #fff;
+  border-radius: 12px;
+  padding: 15px;
+  text-align: center;
+  transition: transform 0.3s, box-shadow 0.3s;
+  border: 1px solid #eee;
+}
+.product-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+}
+.product-card img {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+.product-card h3 {
+  margin: 10px 0 5px;
+}
+.product-card p {
+  font-size: 14px;
+  color: #555;
+  margin-bottom: 8px;
+}
+.price {
+  font-weight: bold;
+  color: var(--secondary);
+  font-size: 16px;
+}
+.btn {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 8px 12px;
+  border-radius: 6px;
+  text-decoration: none;
+  font-size: 14px;
+  color: white;
+  background: var(--primary);
+  transition: 0.3s;
+}
+.btn:hover {background: var(--secondary);}
+
+/* ===== TESTIMONI ===== */
+.testimoni {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+.testimoni .card {
+  background: #f9f9f9;
+  border-radius: 10px;
+  padding: 20px;
+  width: 300px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+.testimoni .card p {
+  font-style: italic;
+  color: #333;
+}
+.testimoni .card span {
+  display: block;
+  margin-top: 10px;
+  color: var(--primary);
+  font-weight: bold;
+}
+
+/* ===== PROFIL & MAP ===== */
+.profile {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+.profile img {
+  width: 140px;
+  border-radius: 50%;
+  border: 3px solid var(--primary);
+}
+.profile-info {max-width: 400px;text-align: left;}
+iframe {border-radius: 10px;border: 2px solid var(--primary);}
+
+/* ===== FOOTER ===== */
+footer {
+  background: var(--primary);
+  color: white;
+  text-align: center;
+  padding: 14px;
+  font-size: 14px;
+  margin-top: 30px;
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="#home">Beranda</a>
+  <a href="#produk">Produk</a>
+  <a href="#testimoni">Testimoni</a>
+  <a href="#profil">Profil</a>
+  <a href="#alamat">Alamat</a>
+</nav>
+
+<section class="hero" id="home">
+  <h1>💻 Randu Tech Store</h1>
+  <p>Toko Laptop Online Terpercaya — Temukan Laptop Impianmu Disini!</p>
+  <button onclick="window.location.href='#produk'">Lihat Produk</button>
+</section>
+
+<section id="produk">
+  <h2>Katalog Laptop Premium</h2>
+  <div class="gallery">
+    <div class="product-card">
+      <img src="https://dlcdnwebimgs.asus.com/gain/77387050-5133-4282-93AC-656739026015" alt="ASUS ROG Strix">
+      <h3>ASUS ROG Strix SCAR 18</h3>
+      <p>Intel i9 • RTX 4080 • RAM 32GB • SSD 1TB</p>
+      <div class="price">Rp 29.000.000</div>
+      <a href="#" class="btn">Beli Sekarang</a>
+    </div>
+
+    <div class="product-card">
+      <img src="https://dlcdnwebimgs.asus.com/gain/C602958C-07BE-45B3-AC52-EA8B1597BEB6" alt="ASUS Zephyrus">
+      <h3>ASUS ROG Zephyrus G14</h3>
+      <p>Ryzen 9 • RTX 4060 • RAM 16GB</p>
+      <div class="price">Rp 18.000.000</div>
+      <a href="#" class="btn">Beli Sekarang</a>
+    </div>
+
+    <div class="product-card">
+      <img src="https://els.id/wp-content/uploads/2024/06/Predator-Helios-Neo-16-PHN16-72-2.png" alt="Acer Predator">
+      <h3>Acer Predator Helios</h3>
+      <p>Intel i7 • RTX 3070 • RAM 16GB</p>
+      <div class="price">Rp 15.500.000</div>
+      <a href="#" class="btn">Beli Sekarang</a>
+    </div>
+
+    <div class="product-card">
+      <img src="https://down-id.img.susercontent.com/file/id-11134207-7r990-luj0w6dkyqh607" alt="MacBook Air M2">
+      <h3>MacBook Air M2</h3>
+      <p>Apple M2 • 8GB RAM • SSD 512GB</p>
+      <div class="price">Rp 17.000.000</div>
+      <a href="#" class="btn">Beli Sekarang</a>
+    </div>
+
+    <div class="product-card">
+      <img src="https://m.media-amazon.com/images/I/81Vep45DQ4L.jpg" alt="Dell XPS">
+      <h3>Dell XPS 15</h3>
+      <p>Intel i7 • GTX 1650Ti • RAM 16GB</p>
+      <div class="price">Rp 21.000.000</div>
+      <a href="#" class="btn">Beli Sekarang</a>
+    </div>
+
+    <div class="product-card">
+      <img src="https://els.id/wp-content/uploads/2025/08/HP-Omen-16-RGB.png" alt="HP Omen 16">
+      <h3>HP Omen 16</h3>
+      <p>Ryzen 7 • RTX 4070 • RAM 16GB</p>
+      <div class="price">Rp 19.500.000</div>
+      <a href="#" class="btn">Beli Sekarang</a>
+    </div>
+  </div>
+</section>
+
+<section id="testimoni">
+  <h2>Testimoni Pelanggan</h2>
+  <div class="testimoni">
+    <div class="card"><p>"Pelayanan cepat dan laptop datang dalam kondisi sempurna!"</p><span>- Andi, Jakarta</span></div>
+    <div class="card"><p>"Harga terbaik dan garansi resmi. Sangat puas belanja di sini."</p><span>- Sinta, Medan</span></div>
+    <div class="card"><p>"Laptop gaming-nya mantap banget, FPS tinggi terus!"</p><span>- Dimas, Surabaya</span></div>
+  </div>
+</section>
+
+<section id="profil">
+  <h2>Profil Penjual</h2>
+  <div class="profile">
+    
+    <div class="profile-info">
+      <p><strong>Nama:</strong> Randu Tech Store</p>
+      <p><strong>Deskripsi:</strong> Kami menyediakan laptop premium dengan harga kompetitif dan layanan purna jual terbaik. Garansi 100% resmi.</p>
+      <p><strong>Kontak:</strong> 📧 randu@techstore.com | ☎️ 0812-3456-7890</p>
+    </div>
+  </div>
+</section>
+
+<section id="alamat">
+  <h2>Alamat Toko</h2>
+  <div style="text-align:center">
+    <p>Jl. Teknologi No. 123, Medan, Sumatera Utara</p>
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d31864.6847031601!2d98.6601575!3d3.5852424!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3031302b2044f05b%3A0x3039d80b2200f0!2sMedan!5e0!3m2!1sid!2sid!4v1717830396031" width="400" height="250" allowfullscreen=""></iframe>
+  </div>
+</section>
+
+<footer>© 2025 Randu Tech Store — Semua hak cipta dilindungi</footer>
+
+</body>
+</html>
