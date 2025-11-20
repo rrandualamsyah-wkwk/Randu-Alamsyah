@@ -1,0 +1,148 @@
+#include <iostream>
+#include <cmath>    // Untuk fungsi matematika seperti tan
+#include <limits>   // Untuk numeric_limits
+
+using namespace std;
+
+// Fungsi untuk menampilkan Informasi Pribadi
+void showInfo() {
+    cout << "=== Informasi Pribadi ===" << endl;
+    cout << "Nama	: [RANDU ALAMSYAH]" << endl;
+    cout << "Kelas	: [XI RPL 1]" << endl;
+    cout << "No HP	: [083839704248]" << endl;
+    cout << "Alamat	: [JL.BROMO Gg.MAMIYAI No.10]" << endl;
+    cout << "============================" << endl << endl;
+}
+
+// Fungsi untuk menampilkan menu operasi
+void showMenu() {
+    cout << "=== Kalkulator Sederhana ===" << endl;
+    cout << "Pilih operasi:" << endl;
+    cout << "1. Penjumlahan (+)" << endl;
+    cout << "2. Pengurangan (-)" << endl;
+    cout << "3. Perkalian (*)" << endl;
+    cout << "4. Pembagian (/)" << endl;
+    cout << "5. Persen (%)" << endl;
+    cout << "6. Cotangen (cot)" << endl;
+    cout << "0. Keluar" << endl;
+    cout << "============================" << endl;
+    cout << "Masukkan pilihan: ";
+}
+
+// Fungsi operasi dasar
+double tambah(double a, double b) {
+    return a + b;
+}
+
+double kurang(double a, double b) {
+    return a - b;
+}
+
+double kali(double a, double b) {
+    return a * b;
+}
+
+double bagi(double a, double b) {
+    if (b == 0) {
+        cout << "Error: Pembagian dengan nol tidak diperbolehkan." << endl;
+        return numeric_limits<double>::quiet_NaN();
+    }
+    return a / b;
+}
+
+// Fungsi persen: mengubah angka menjadi persen (nilai / 100)
+double persen(double a) {
+    return a / 100.0;
+}
+
+// Fungsi cotangen: cot(x) = 1 / tan(x)
+// Input dalam derajat, konversi ke radian terlebih dahulu
+double cotangen(double derajat) {
+    double radian = derajat * M_PI / 180.0;
+    double tanValue = tan(radian);
+    if (tanValue == 0) {
+        cout << "Error: Cotangen tidak terdefinisi untuk sudut ini." << endl;
+        return numeric_limits<double>::quiet_NaN();
+    }
+    return 1.0 / tanValue;
+}
+
+int main() {
+	showInfo();
+    int pilihan;
+    double nilai1, nilai2, hasil;
+
+    do {
+        showMenu();
+        cin >> pilihan;
+
+        switch (pilihan) {
+            case 1: // Penjumlahan
+                cout << "Masukkan angka pertama: ";
+                cin >> nilai1;
+                cout << "Masukkan angka kedua: ";
+                cin >> nilai2;
+                hasil = tambah(nilai1, nilai2);
+                cout << "Hasil: " << hasil << endl;
+                break;
+
+            case 2: // Pengurangan
+                cout << "Masukkan angka pertama: ";
+                cin >> nilai1;
+                cout << "Masukkan angka kedua: ";
+                cin >> nilai2;
+                hasil = kurang(nilai1, nilai2);
+                cout << "Hasil: " << hasil << endl;
+                break;
+
+            case 3: // Perkalian
+                cout << "Masukkan angka pertama: ";
+                cin >> nilai1;
+                cout << "Masukkan angka kedua: ";
+                cin >> nilai2;
+                hasil = kali(nilai1, nilai2);
+                cout << "Hasil: " << hasil << endl;
+                break;
+
+            case 4: // Pembagian
+                cout << "Masukkan angka pertama: ";
+                cin >> nilai1;
+                cout << "Masukkan angka kedua: ";
+                cin >> nilai2;
+                hasil = bagi(nilai1, nilai2);
+                if (!isnan(hasil)) {
+                    cout << "Hasil: " << hasil << endl;
+                }
+                break;
+
+            case 5: // Persen
+                cout << "Masukkan angka: ";
+                cin >> nilai1;
+                hasil = persen(nilai1);
+                cout << nilai1 << "% = " << hasil << endl;
+                break;
+
+            case 6: // Cotangen
+                cout << "Masukkan sudut dalam derajat: ";
+                cin >> nilai1;
+                hasil = cotangen(nilai1);
+                if (!isnan(hasil)) {
+                    cout << "cot(" << nilai1 << "°) = " << hasil << endl;
+                }
+                break;
+
+            case 0:
+                cout << "Keluar dari program." << endl;
+                break;
+
+            default:
+                cout << "Pilihan tidak valid. Silakan coba lagi." << endl;
+                break;
+        }
+
+        cout << endl;
+
+    } while (pilihan != 0);
+
+    return 0;
+}
